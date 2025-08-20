@@ -4,7 +4,6 @@
   "outputDirectory": "dist",
   "framework": null,
   "installCommand": "npm install",
-  "functions": {},
   "headers": [
     {
       "source": "/(.*)",
