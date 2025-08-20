@@ -1,9 +1,9 @@
 {
   "version": 2,
-  "buildCommand": "npm run build",
-  "outputDirectory": "dist",
+  "buildCommand": "cd HomePage && npm run build",
+  "outputDirectory": "HomePage/dist",
   "framework": null,
-  "installCommand": "npm install",
+  "installCommand": "cd HomePage && npm install",
   "headers": [
     {
       "source": "/(.*)",

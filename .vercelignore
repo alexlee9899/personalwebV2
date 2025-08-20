@@ -5,6 +5,8 @@ node_modules/
 .DS_Store
 README.md
 .editorconfig
-src/
-gulpfile.js
-package-lock.json 
+Sienna- portfolio.pdf
+HomePage/src/
+HomePage/gulpfile.js
+HomePage/package-lock.json
+HomePage/node_modules/ 
