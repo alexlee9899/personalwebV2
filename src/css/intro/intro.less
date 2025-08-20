@@ -4,19 +4,20 @@
 }
 
 .shape {
-	height: 100vh;
+	height: 200px;
 	width: 100%;
 	display: block;
 	background: transparent;
 	&-wrap {
-		position: relative;
+		position: absolute;
 		z-index: 0;
-		margin: -5px 0 0 0;
+		bottom: 0;
+		left: 0;
 		will-change: scroll-position;
 		background: transparent;
 	}
 	path {
-		fill: #151515;
+		fill: #060606;
 	}
 }
 
@@ -78,6 +79,7 @@
 	-webkit-text-fill-color: transparent;
 	animation: shimmer 2s linear infinite;
 	text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+	cursor: pointer;
 	&:hover,
 	&:focus {
 		color: @color-link-hover;
@@ -101,7 +103,7 @@
 .arrow {
 	position: absolute;
 	left: 49.5%;
-	top: 95%;
+	top: 85%;
 	transform-origin: 50% 50%;
 	transform: translate3d(-50%, 0%, 0);
 	&-1 {
@@ -135,13 +137,14 @@
 @keyframes arrow-movement {
 	0% {
 		opacity: 0;
-		top: 92%;
+		top: 82%;
 	}
 	70% {
 		opacity: 1;
 	}
 	100% {
 		opacity: 0;
+		top: 88%;
 	}
 }
 

@@ -9,14 +9,19 @@
 			- const { first , second , third, fourth } = main.ul
 			ul
 				li
-					a(href=`${first.href}` aria-label=`${first.text}`)
+					a(href="#about" aria-label=`${first.text}`)
 						i(class=`icon icon-${first.icon}`)
 						span(data-translate=`${first.text}`) #{first.text}
 
 				li
-					a(href=`${second.href}` aria-label=`${second.text}`)
+					a(href="#portfolio" aria-label=`${second.text}`)
 						i(class=`icon icon-${second.icon}`)
 						span(data-translate=`${second.text}`) #{second.text}
+
+				li
+					a(href="#presentation" aria-label="Presentation")
+						i(class="icon icon-bokeyuan")
+						span(data-translate="Presentation") Presentation
 
 				li
 					a(href=`${third.href}` aria-label=`${third.text}` target="_blank")
@@ -29,3 +34,159 @@
 						span(data-translate=`${fourth.text}`) #{fourth.text}
 
 	canvas.grid-background#gridCanvas
+
+// About Me Section
+.content.content-section#about
+	.section-container
+		.section-inner
+			h2.section-title About Me
+			.section-content
+				.summary-card
+					p.summary-text Marketing and digital strategy professional with cross-border experience (Australia & China). Skilled in content creation, SEO optimization, and social media growth (Xiaohongshu, Instagram, TikTok, WeChat). Experienced in corporate (Tencent Music) and startup (Good Value Realty). Proficient in AI tools (ChatGPT, Canva) to enhance content workflows.
+				
+				.info-grid
+					.info-card
+						h3 🎓 Education
+						.education-item
+							.education-school University of New South Wales (UNSW)
+							.education-degree Master of Commerce (Marketing & Digital Transformation) | 2023-2025
+						.education-item
+							.education-school Auckland University of Technology (AUT)
+							.education-degree Bachelor of International Hospitality Management (Event Management) | 2020-2022
+					
+					.info-card
+						h3 🔧 Key Skills
+						.skills-list
+							span.skill-tag Social Media Marketing
+							span.skill-tag Content Creation
+							span.skill-tag SEO Optimization
+							span.skill-tag Data Analysis
+							span.skill-tag Advertising
+							span.skill-tag AI Tools
+
+// Portfolio Section
+.content.content-section#portfolio
+	.section-container
+		.section-inner
+			h2.section-title My Portfolio
+			.section-content
+				.projects-grid
+					.project-card
+						h3 🎯 Social Media Marketing Project
+						.project-goal
+							h4 Goal
+							p Increase brand exposure, attract potential buyers, and build industry partnerships
+						.project-results
+							h4 📈 Results
+							ul
+								li +200 new followers, 20,000+ views in short period
+								li Converted 2 brokers into long-term partners (Sydney market focus)
+					
+					.project-card
+						h3 🏢 Event Promotion & Partnership Project
+						.project-goal
+							h4 Goal
+							p Promote event venue rental and build long-term partnerships
+						.project-results
+							h4 🎯 Results
+							ul
+								li Positioned Homeland Center as a leading event venue in Sydney
+								li Social media effectively supported offline promotion
+					
+					.project-card
+						h3 ⚖️ Instagram Marketing - Legal Firm
+						.project-goal
+							h4 Goal
+							p Establish a professional legal presence on Instagram
+						.project-results
+							h4 📱 Results
+							ul
+								li Created consistent branding (logo, layout, typography)
+								li Improved retention and share rate
+
+// Presentation Section
+.content.content-section#presentation
+	.section-container
+		.section-inner
+			h2.section-title My Presentation
+			.section-content
+				.presentation-intro
+					p.intro-text Here is my professional marketing presentation, showcasing my expertise and project experience in the field of digital marketing.
+				
+				.canva-embed-container
+					.embed-toolbar
+						.toolbar-left
+							span.status-indicator
+							span.embed-title Canva Presentation
+						.toolbar-right
+							button.copy-btn(onclick="copyPresentationLink()") Copy Link
+							button.open-btn(onclick="openCanvaPresentation()") Open in New Window
+					
+					.embed-wrapper#canvaEmbedWrapper
+						.loading-skeleton#loadingSkeleton
+							.skeleton-content
+								.skeleton-line
+								.skeleton-line.short
+								.skeleton-line
+								.skeleton-line.medium
+						
+						.error-state#errorState(style="display: none;")
+							.error-content
+								h4 😔 Presentation Cannot Be Embedded
+								p Due to cross-origin security restrictions, some Canva content may not be directly embedded.
+								p Please click the button below to view the complete presentation in a new window:
+								button.view-btn(onclick="openCanvaPresentation()") 🔗 View My Presentation
+						
+						.embed-preview#embedPreview(style="display: none;")
+							.preview-content
+								.preview-header
+									h3 📊 My Marketing Portfolio Showcase
+									p Professional Marketing Strategy & Digital Transformation Case Studies
+								.preview-features
+									.feature-item
+										span.feature-icon 🎯
+										span.feature-text Social Media Marketing Strategy
+									.feature-item
+										span.feature-icon 📈
+										span.feature-text Data-Driven Growth Solutions
+									.feature-item
+										span.feature-icon 🚀
+										span.feature-text Digital Transformation Practice
+									.feature-item
+										span.feature-icon 💡
+										span.feature-text Innovative Marketing Solutions
+								.preview-action
+									button.preview-btn(onclick="openCanvaPresentation()") View Complete Presentation
+						
+						iframe#canvaIframe(
+							src=""
+							title="Sienna's Marketing Presentation"
+							loading="lazy"
+							allowfullscreen
+							style="display: none;"
+						)
+
+// Contact Section
+.content.content-section#contact
+	.section-container
+		.section-inner
+			h2.section-title Contact Me
+			.section-content
+				.contact-grid
+					.contact-card
+						h3 📞 Phone
+						p (+61) 424 790 520
+					.contact-card
+						h3 ✉️ Email
+						p supertongtong520@gmail.com
+					.contact-card
+						h3 📍 Location
+						p Mascot, NSW
+				
+				.achievements-card
+					h3 🏆 Key Achievements
+					.achievements-list
+						.achievement-item +200 new followers, 20,000+ views in short period
+						.achievement-item +27% lead generation from real estate campaigns
+						.achievement-item +30% engagement growth from multi-platform campaigns
+						.achievement-item Successfully planned 10+ events with 2,000+ attendees

@@ -53,7 +53,10 @@ class GridAnimation {
 		}
 
 		// 添加页面可见性变化监听，在页面不可见时暂停动画
-		document.addEventListener(visibilityChangeEvent, this.handleVisibilityChange.bind(this));
+		document.addEventListener(
+			visibilityChangeEvent,
+			this.handleVisibilityChange.bind(this)
+		);
 	}
 
 	resizeCanvas() {
@@ -171,8 +174,12 @@ class GridAnimation {
 		const dpr = window.devicePixelRatio || 1;
 
 		// 随机生成特殊方块的位置
-		const numSquaresX = Math.ceil((this.canvas.width / dpr) / this.options.squareSize);
-		const numSquaresY = Math.ceil((this.canvas.height / dpr) / this.options.squareSize);
+		const numSquaresX = Math.ceil(
+			this.canvas.width / dpr / this.options.squareSize
+		);
+		const numSquaresY = Math.ceil(
+			this.canvas.height / dpr / this.options.squareSize
+		);
 
 		// 确保食物不会生成在蛇身上和边缘
 		let newX, newY;
@@ -219,14 +226,16 @@ class GridAnimation {
 
 		// 绘制蛇身
 		this.snakeBody.forEach((segment, index) => {
-			const squareX =
-				Math.round(segment.x * this.options.squareSize +
-				startX -
-				(this.gridOffset.x % this.options.squareSize));
-			const squareY =
-				Math.round(segment.y * this.options.squareSize +
-				startY -
-				(this.gridOffset.y % this.options.squareSize));
+			const squareX = Math.round(
+				segment.x * this.options.squareSize +
+					startX -
+					(this.gridOffset.x % this.options.squareSize)
+			);
+			const squareY = Math.round(
+				segment.y * this.options.squareSize +
+					startY -
+					(this.gridOffset.y % this.options.squareSize)
+			);
 
 			this.ctx.shadowColor = this.options.hoverShadowColor;
 			this.ctx.shadowBlur = 15;
@@ -242,8 +251,12 @@ class GridAnimation {
 				const gradientFactor = Math.pow(this.options.snakeColorDecay, index);
 
 				// 解析头部和尾部颜色
-				const headColorMatch = this.options.snakeHeadColor.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([.\d]+))?\)/);
-				const tailColorMatch = this.options.snakeTailColor.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([.\d]+))?\)/);
+				const headColorMatch = this.options.snakeHeadColor.match(
+					/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([.\d]+))?\)/
+				);
+				const tailColorMatch = this.options.snakeTailColor.match(
+					/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([.\d]+))?\)/
+				);
 
 				if (headColorMatch && tailColorMatch) {
 					const headR = parseInt(headColorMatch[1]);
@@ -292,8 +305,12 @@ class GridAnimation {
 				y < this.canvas.height + this.options.squareSize;
 				y += this.options.squareSize
 			) {
-				const squareX = Math.round(x - (this.gridOffset.x % this.options.squareSize));
-				const squareY = Math.round(y - (this.gridOffset.y % this.options.squareSize));
+				const squareX = Math.round(
+					x - (this.gridOffset.x % this.options.squareSize)
+				);
+				const squareY = Math.round(
+					y - (this.gridOffset.y % this.options.squareSize)
+				);
 				const gridX = Math.floor((x - startX) / this.options.squareSize);
 				const gridY = Math.floor((y - startY) / this.options.squareSize);
 
@@ -366,7 +383,8 @@ class GridAnimation {
 			this.canvas.width / dpr / 2,
 			this.canvas.height / dpr / 2,
 			Math.sqrt(
-				Math.pow(this.canvas.width / dpr, 2) + Math.pow(this.canvas.height / dpr, 2)
+				Math.pow(this.canvas.width / dpr, 2) +
+					Math.pow(this.canvas.height / dpr, 2)
 			) / 2
 		);
 		gradient.addColorStop(0, "rgba(6, 6, 6, 0)");
@@ -410,9 +428,9 @@ class GridAnimation {
 		);
 
 		// 确保移动位置为整数值来避免子像素渲染导致的闪烁
-		const moveAmount = isPhone ?
-			Math.round(effectiveSpeed * 100) / 100 :
-			effectiveSpeed;
+		const moveAmount = isPhone
+			? Math.round(effectiveSpeed * 100) / 100
+			: effectiveSpeed;
 
 		switch (this.options.direction) {
 			case "right":
@@ -453,14 +471,16 @@ class GridAnimation {
 			const startY =
 				Math.floor(this.gridOffset.y / this.options.squareSize) *
 				this.options.squareSize;
-			const foodX =
-				Math.round(this.specialBlock.x * this.options.squareSize +
-				startX -
-				(this.gridOffset.x % this.options.squareSize));
-			const foodY =
-				Math.round(this.specialBlock.y * this.options.squareSize +
-				startY -
-				(this.gridOffset.y % this.options.squareSize));
+			const foodX = Math.round(
+				this.specialBlock.x * this.options.squareSize +
+					startX -
+					(this.gridOffset.x % this.options.squareSize)
+			);
+			const foodY = Math.round(
+				this.specialBlock.y * this.options.squareSize +
+					startY -
+					(this.gridOffset.y % this.options.squareSize)
+			);
 
 			// 调整适用于设备像素比的边界检查
 			if (
@@ -513,7 +533,10 @@ class GridAnimation {
 		this.canvas.removeEventListener("mouseleave", () =>
 			this.handleMouseLeave()
 		);
-		document.removeEventListener(visibilityChangeEvent, this.handleVisibilityChange.bind(this));
+		document.removeEventListener(
+			visibilityChangeEvent,
+			this.handleVisibilityChange.bind(this)
+		);
 
 		// 移除方向变化监听
 		if (isPhone && window.orientation !== undefined) {
@@ -590,54 +613,47 @@ function loadIntro() {
 	loadIntro.loaded = true;
 }
 
-function switchPage() {
-	if (switchPage.switched) {
+function scrollToMain() {
+	if (scrollToMain.scrolled) {
 		return;
 	}
-	const DOM = {
-		intro: $(".content-intro"),
-		path: $(".shape-wrap path"),
-		shape: $("svg.shape"),
-	};
-	DOM.shape.style.transformOrigin = "50% 0%";
 
-	anime({
-		targets: DOM.intro,
-		duration: 1100,
-		easing: "easeInOutSine",
-		translateY: "-200vh",
-	});
+	// 平滑滚动到主要内容区域
+	const mainSection = document.querySelector(".content-main");
+	if (mainSection) {
+		mainSection.scrollIntoView({
+			behavior: "smooth",
+			block: "start",
+		});
+	}
 
-	anime({
-		targets: DOM.shape,
-		scaleY: [
-			{
-				value: [0.8, 1.8],
-				duration: 550,
-				easing: "easeInQuad",
-			},
-			{
-				value: 1,
-				duration: 550,
-				easing: "easeOutQuad",
-			},
-		],
-	});
-	anime({
-		targets: DOM.path,
-		duration: 1100,
-		easing: "easeOutQuad",
-		d: DOM.path.getAttribute("pathdata:id"),
-		complete: function (anim) {
-			if (canvas) {
-				cancelAnimationFrame(animationID);
-				canvas.parentElement.removeChild(canvas);
-				canvas = null;
-			}
-		},
-	});
+	// 初始化网格动画
+	setTimeout(() => {
+		const canvas = document.getElementById("gridCanvas");
+		if (canvas) {
+			const gridAnimation = new GridAnimation(canvas, {
+				direction: "diagonal",
+				speed: isPhone ? 0.03 : 0.05,
+				borderColor: isPhone
+					? "rgba(255, 255, 255, 0.2)"
+					: "rgba(255, 255, 255, 0.1)",
+				squareSize: isPhone ? 50 : 40,
+				hoverFillColor: "rgba(255, 255, 255, 0.8)",
+				hoverShadowColor: "rgba(255, 255, 255, 0.8)",
+				transitionDuration: 200,
+				trailDuration: 1500,
+				specialBlockColor: "rgba(100, 255, 152, 0.8)",
+				specialHoverColor: "rgba(29, 202, 29, 0.8)",
+				// 蛇身颜色渐变配置
+				snakeHeadColor: "rgba(255, 255, 255, 0.95)",
+				snakeTailColor: "rgba(218, 231, 255, 0.25)",
+				snakeColorDecay: 0.85, // 颜色衰减系数
+			});
+			gridAnimation.init();
+		}
+	}, 800);
 
-	switchPage.switched = true;
+	scrollToMain.scrolled = true;
 }
 
 function loadMain() {
@@ -646,39 +662,13 @@ function loadMain() {
 	}
 	setTimeout(() => {
 		$(".card-inner").classList.add("in");
-		setTimeout(() => {
-			const canvas = document.getElementById("gridCanvas");
-			if (canvas) {
-				const gridAnimation = new GridAnimation(canvas, {
-					direction: "diagonal",
-					speed: isPhone ? 0.03 : 0.05,
-					borderColor: isPhone ? "rgba(255, 255, 255, 0.2)" : "rgba(255, 255, 255, 0.1)",
-					squareSize: isPhone ? 50 : 40,
-					hoverFillColor: "rgba(255, 255, 255, 0.8)",
-					hoverShadowColor: "rgba(255, 255, 255, 0.8)",
-					transitionDuration: 200,
-					trailDuration: 1500,
-					specialBlockColor: "rgba(100, 255, 152, 0.8)",
-					specialHoverColor: "rgba(29, 202, 29, 0.8)",
-					// 蛇身颜色渐变配置
-					snakeHeadColor: "rgba(255, 255, 255, 0.95)",
-					snakeTailColor: "rgba(218, 231, 255, 0.25)",
-					snakeColorDecay: 0.85, // 颜色衰减系数
-				});
-				gridAnimation.init();
-			}
-		}, 1100);
 	}, 400);
 	loadMain.loaded = true;
 }
 
-function loadAll() {
-	if (loadAll.loaded) {
-		return;
-	}
-	switchPage();
+// 当页面加载时初始化主要内容
+function initializeMain() {
 	loadMain();
-	loadAll.loaded = true;
 }
 
 window.visibilityChangeEvent = hiddenProperty.replace(
@@ -686,14 +676,17 @@ window.visibilityChangeEvent = hiddenProperty.replace(
 	"visibilitychange"
 );
 window.addEventListener(visibilityChangeEvent, loadIntro);
-window.addEventListener("DOMContentLoaded", loadIntro);
+window.addEventListener("DOMContentLoaded", () => {
+	loadIntro();
+	initializeMain();
+});
 
 const enterEl = $(".enter");
-enterEl.addEventListener("click", loadAll);
-enterEl.addEventListener("touchenter", loadAll);
+enterEl.addEventListener("click", scrollToMain);
+enterEl.addEventListener("touchenter", scrollToMain);
 
-document.body.addEventListener("mousewheel", loadAll, { passive: true });
-$(".arrow").addEventListener("mouseenter", loadAll);
+document.body.addEventListener("mousewheel", scrollToMain, { passive: true });
+$(".arrow").addEventListener("mouseenter", scrollToMain);
 
 if (isPhone) {
 	document.addEventListener(
@@ -715,8 +708,241 @@ if (isPhone) {
 			if (direction !== DIRECTIONS.UP) {
 				return;
 			}
-			loadAll();
+			scrollToMain();
 		},
 		{ passive: true }
 	);
+}
+
+// 添加平滑滚动功能
+document.addEventListener("DOMContentLoaded", function () {
+	// 为所有内部链接添加平滑滚动
+	const links = document.querySelectorAll('a[href^="#"]');
+
+	links.forEach((link) => {
+		link.addEventListener("click", function (e) {
+			e.preventDefault();
+
+			const targetId = this.getAttribute("href");
+			const targetSection = document.querySelector(targetId);
+
+			if (targetSection) {
+				targetSection.scrollIntoView({
+					behavior: "smooth",
+					block: "start",
+				});
+			}
+		});
+	});
+
+	// 初始化Canva嵌入功能
+	initCanvaEmbed();
+});
+
+// Canva嵌入相关功能
+function initCanvaEmbed() {
+	const iframe = document.getElementById("canvaIframe");
+	const loadingSkeleton = document.getElementById("loadingSkeleton");
+	const errorState = document.getElementById("errorState");
+	const embedPreview = document.getElementById("embedPreview");
+
+	if (!iframe || !loadingSkeleton) return;
+
+	// 尝试不同的Canva嵌入URL格式
+	const canvaUrls = [
+		"https://www.canva.com/design/DAGgrJ-ci_E/M7_DJtxwUXbis3N81qHduA/view?embed",
+		"https://www.canva.com/design/DAGgrJ-ci_E/view?embed",
+		"https://www.canva.com/design/DAGgrJ-ci_E/M7_DJtxwUXbis3N81qHduA/view?embed=1",
+	];
+
+	let currentUrlIndex = 0;
+	let loadAttempts = 0;
+	const maxAttempts = 3;
+
+	function tryLoadCanva() {
+		if (currentUrlIndex >= canvaUrls.length || loadAttempts >= maxAttempts) {
+			// 所有URL都尝试失败，显示预览界面
+			showEmbedPreview();
+			return;
+		}
+
+		iframe.src = canvaUrls[currentUrlIndex];
+		loadAttempts++;
+
+		// 设置5秒超时
+		const timeout = setTimeout(() => {
+			currentUrlIndex++;
+			tryLoadCanva();
+		}, 5000);
+
+		// 监听iframe加载成功
+		const onLoad = () => {
+			clearTimeout(timeout);
+			setTimeout(() => {
+				loadingSkeleton.style.display = "none";
+				iframe.style.display = "block";
+			}, 1000);
+			iframe.removeEventListener("load", onLoad);
+			iframe.removeEventListener("error", onError);
+		};
+
+		// 监听iframe加载错误
+		const onError = () => {
+			clearTimeout(timeout);
+			currentUrlIndex++;
+			tryLoadCanva();
+			iframe.removeEventListener("load", onLoad);
+			iframe.removeEventListener("error", onError);
+		};
+
+		iframe.addEventListener("load", onLoad);
+		iframe.addEventListener("error", onError);
+	}
+
+	function showEmbedPreview() {
+		loadingSkeleton.style.display = "none";
+		if (embedPreview) {
+			embedPreview.style.display = "flex";
+		} else if (errorState) {
+			errorState.style.display = "flex";
+		}
+	}
+
+	// 开始尝试加载
+	setTimeout(() => {
+		tryLoadCanva();
+	}, 1000);
+}
+
+// 复制演示文稿链接
+function copyPresentationLink() {
+	const url =
+		"https://www.canva.com/design/DAGgrJ-ci_E/M7_DJtxwUXbis3N81qHduA/view";
+
+	if (navigator.clipboard && window.isSecureContext) {
+		navigator.clipboard
+			.writeText(url)
+			.then(() => {
+				showToast("Link copied to clipboard!");
+			})
+			.catch(() => {
+				fallbackCopyTextToClipboard(url);
+			});
+	} else {
+		fallbackCopyTextToClipboard(url);
+	}
+}
+
+// 降级复制方法
+function fallbackCopyTextToClipboard(text) {
+	const textArea = document.createElement("textarea");
+	textArea.value = text;
+	textArea.style.top = "0";
+	textArea.style.left = "0";
+	textArea.style.position = "fixed";
+	textArea.style.opacity = "0";
+
+	document.body.appendChild(textArea);
+	textArea.focus();
+	textArea.select();
+
+	try {
+		document.execCommand("copy");
+		showToast("Link copied to clipboard!");
+	} catch (err) {
+		showToast("Copy failed, please copy the link manually");
+	}
+
+	document.body.removeChild(textArea);
+}
+
+// 在新窗口打开Canva演示文稿
+function openCanvaPresentation() {
+	const url =
+		"https://www.canva.com/design/DAGgrJ-ci_E/M7_DJtxwUXbis3N81qHduA/view";
+	const newWindow = window.open(url, "_blank", "noopener,noreferrer");
+
+	if (newWindow) {
+		showToast("Opening presentation in new window...");
+	} else {
+		showToast("Please allow pop-ups to view the presentation");
+		// 如果弹出窗口被阻止，尝试在当前标签页打开
+		setTimeout(() => {
+			window.location.href = url;
+		}, 2000);
+	}
+}
+
+// 全屏查看（保留原有函数名以兼容）
+function openFullscreen() {
+	openCanvaPresentation();
+}
+
+// 显示提示消息
+function showToast(message) {
+	// 检查是否已有toast
+	const existingToast = document.querySelector(".toast-message");
+	if (existingToast) {
+		existingToast.remove();
+	}
+
+	const toast = document.createElement("div");
+	toast.className = "toast-message";
+	toast.textContent = message;
+	toast.style.cssText = `
+		position: fixed;
+		top: 20px;
+		right: 20px;
+		background: rgba(74, 222, 128, 0.9);
+		color: white;
+		padding: 12px 20px;
+		border-radius: 8px;
+		font-size: 0.9rem;
+		z-index: 1000;
+		animation: slideIn 0.3s ease-out;
+		backdrop-filter: blur(10px);
+		max-width: 300px;
+		text-align: center;
+	`;
+
+	// 添加滑入动画样式
+	if (!document.querySelector("#toast-styles")) {
+		const style = document.createElement("style");
+		style.id = "toast-styles";
+		style.textContent = `
+			@keyframes slideIn {
+				from {
+					transform: translateX(100%);
+					opacity: 0;
+				}
+				to {
+					transform: translateX(0);
+					opacity: 1;
+				}
+			}
+			@keyframes slideOut {
+				from {
+					transform: translateX(0);
+					opacity: 1;
+				}
+				to {
+					transform: translateX(100%);
+					opacity: 0;
+				}
+			}
+		`;
+		document.head.appendChild(style);
+	}
+
+	document.body.appendChild(toast);
+
+	// 3秒后自动移除
+	setTimeout(() => {
+		toast.style.animation = "slideOut 0.3s ease-out";
+		setTimeout(() => {
+			if (toast.parentNode) {
+				toast.remove();
+			}
+		}, 300);
+	}, 3000);
 }

@@ -1,44 +1,44 @@
 {
 	"head": {
-		"title": "SimonAKing",
-		"description": "Author:SimonAKing,Category:Personal Blog",
+		"title": "Sienna Shang - Marketing Professional",
+		"description": "Author:Sienna Shang,Category:Marketing Portfolio,Digital Marketing,Social Media Marketing",
 		"favicon": "favicon.ico"
 	},
 	"intro": {
-		"title": "SimonAKing",
-		"subtitle": "Front back left right end engineer",
-		"enter": "enter",
-		"supportAuthor": true,
+		"title": "Sienna Shang",
+		"subtitle": "Marketing & Digital Transformation Specialist",
+		"enter": "Explore My Work",
+		"supportAuthor": false,
 		"background": true
 	},
 	"main": {
-		"name": "SimonAKing",
-		"signature": "Code & Input & Output",
+		"name": "Sienna Shang",
+		"signature": "Marketing Innovation • Digital Transformation • Social Media Expert",
 		"avatar": {
 			"link": "assets/avatar.jpg",
-			"height": "100",
-			"width": "100"
+			"height": "120",
+			"width": "120"
 		},
 		"ul": {
 			"first": {
-				"href": "blog/",
+				"href": "#about",
 				"icon": "bokeyuan",
-				"text": "Blog"
+				"text": "About Me"
 			},
 			"second": {
-				"href": "about/",
+				"href": "#portfolio",
 				"icon": "xiaolian",
-				"text": "About"
+				"text": "Portfolio"
 			},
 			"third": {
-				"href": "mailto:hi@simonaking.com",
+				"href": "mailto:supertongtong520@gmail.com",
 				"icon": "email",
-				"text": "Email"
+				"text": "Contact"
 			},
 			"fourth": {
-				"href": "https://github.com/SimonAKing",
+				"href": "tel:+61424790520",
 				"icon": "github",
-				"text": "Github"
+				"text": "Phone"
 			}
 		}
 	}

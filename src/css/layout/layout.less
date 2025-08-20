@@ -1,26 +1,33 @@
 main {
-	height: 100vh;
 	width: 100%;
-	overflow: hidden;
+	overflow-x: hidden;
 	position: relative;
 }
 
 .content {
 	width: 100%;
-	height: 100vh;
 	position: relative;
 	background: transparent;
 
 	&-intro {
 		z-index: 100;
-		height: 200vh;
+		height: 100vh;
+		position: relative;
+		background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
 	}
 
 	&-main {
-		position: fixed;
-		top: 0;
-		left: 0;
 		background: #060606;
+		height: 100vh;
+		position: relative;
+	}
+
+	&-section {
+		background: #060606;
+		min-height: 100vh;
+		padding: 80px 0;
+		color: #fff;
+		position: relative;
 	}
 
 	&-inner {
@@ -48,4 +55,576 @@ main {
 	width: 100%;
 	height: 100%;
 	z-index: 1;
+}
+
+// 修改shape-wrap样式，使其不会覆盖后续内容
+.shape-wrap {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 200px;
+	z-index: 0;
+	overflow: hidden;
+}
+
+// 新增的部分样式
+.section-container {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 0 20px;
+	position: relative;
+	z-index: 2;
+}
+
+.section-inner {
+	text-align: center;
+}
+
+.section-title {
+	font-size: 3rem;
+	color: #fff;
+	margin-bottom: 60px;
+	text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+	font-weight: 300;
+	
+	@media screen and (max-width: 768px) {
+		font-size: 2rem;
+		margin-bottom: 40px;
+	}
+}
+
+.section-content {
+	display: flex;
+	flex-direction: column;
+	gap: 40px;
+}
+
+// 关于我部分样式
+.summary-card {
+	background: rgba(255, 255, 255, 0.1);
+	border-radius: 15px;
+	padding: 30px;
+	margin-bottom: 40px;
+	backdrop-filter: blur(10px);
+	border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.summary-text {
+	font-size: 1.2rem;
+	line-height: 1.8;
+	color: #ccc;
+	margin: 0;
+}
+
+.info-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+	gap: 30px;
+}
+
+.info-card {
+	background: rgba(255, 255, 255, 0.05);
+	border-radius: 15px;
+	padding: 30px;
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	
+	h3 {
+		color: #fff;
+		margin-bottom: 20px;
+		font-size: 1.3rem;
+	}
+}
+
+.education-item {
+	margin-bottom: 20px;
+	text-align: left;
+}
+
+.education-school {
+	color: #fff;
+	font-weight: bold;
+	font-size: 1.1rem;
+}
+
+.education-degree {
+	color: #ccc;
+	font-size: 0.9rem;
+	margin-top: 5px;
+}
+
+.skills-list {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+}
+
+.skill-tag {
+	background: #93979e;
+	color: #fff;
+	padding: 8px 15px;
+	border-radius: 20px;
+	font-size: 0.9rem;
+	transition: all 0.3s ease;
+	
+	&:hover {
+		background: #fff;
+		color: #060606;
+	}
+}
+
+// 作品集部分样式
+.projects-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+	gap: 30px;
+}
+
+.project-card {
+	background: rgba(255, 255, 255, 0.05);
+	border-radius: 15px;
+	padding: 30px;
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	text-align: left;
+	transition: transform 0.3s ease;
+	
+	&:hover {
+		transform: translateY(-5px);
+	}
+	
+	h3 {
+		color: #fff;
+		margin-bottom: 20px;
+		font-size: 1.3rem;
+		text-align: center;
+	}
+	
+	h4 {
+		color: #ccc;
+		margin-bottom: 10px;
+		font-size: 1rem;
+	}
+	
+	p {
+		color: #b6b6b6;
+		line-height: 1.6;
+		margin-bottom: 15px;
+	}
+	
+	ul {
+		list-style: none;
+		padding: 0;
+		
+		li {
+			color: #ccc;
+			padding: 5px 0;
+			position: relative;
+			padding-left: 20px;
+			
+			&:before {
+				content: "•";
+				color: #93979e;
+				position: absolute;
+				left: 0;
+			}
+		}
+	}
+}
+
+.project-goal {
+	background: rgba(147, 151, 158, 0.1);
+	padding: 15px;
+	border-radius: 10px;
+	margin-bottom: 20px;
+}
+
+.project-results {
+	background: rgba(255, 255, 255, 0.05);
+	padding: 15px;
+	border-radius: 10px;
+}
+
+// PPT展示部分样式
+.presentation-intro {
+	margin-bottom: 40px;
+}
+
+.intro-text {
+	font-size: 1.1rem;
+	line-height: 1.8;
+	color: #ccc;
+	background: rgba(255, 255, 255, 0.05);
+	padding: 20px;
+	border-radius: 10px;
+	border-left: 4px solid #93979e;
+	margin: 0;
+}
+
+.canva-embed-container {
+	max-width: 100%;
+	margin: 0 auto;
+	// 增大整体容器的最大宽度
+	width: 100%;
+}
+
+.embed-toolbar {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	background: rgba(255, 255, 255, 0.1);
+	border-radius: 10px 10px 0 0;
+	padding: 15px 25px; // 增大内边距
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	border-bottom: none;
+}
+
+.toolbar-left {
+	display: flex;
+	align-items: center;
+	gap: 12px; // 增大间距
+}
+
+.status-indicator {
+	width: 10px; // 增大指示器
+	height: 10px;
+	background: #4ade80;
+	border-radius: 50%;
+	display: inline-block;
+}
+
+.embed-title {
+	color: #fff;
+	font-size: 1rem; // 增大字体
+	font-weight: 500;
+}
+
+.toolbar-right {
+	display: flex;
+	gap: 12px; // 增大间距
+}
+
+.copy-btn, .open-btn {
+	background: rgba(255, 255, 255, 0.1);
+	border: 1px solid rgba(255, 255, 255, 0.2);
+	color: #ccc;
+	padding: 8px 16px; // 增大按钮尺寸
+	border-radius: 6px;
+	font-size: 0.9rem; // 稍微增大字体
+	cursor: pointer;
+	transition: all 0.3s ease;
+	
+	&:hover {
+		background: rgba(255, 255, 255, 0.2);
+		color: #fff;
+	}
+}
+
+.embed-wrapper {
+	position: relative;
+	width: 100%;
+	height: 0;
+	padding-bottom: 75%; // 增大高度比例，从56.25%改为75%，使显示框更高
+	background: rgba(255, 255, 255, 0.05);
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	border-radius: 0 0 15px 15px;
+	overflow: hidden;
+	// 增加最小高度确保在小屏幕上也有足够大小
+	min-height: 500px;
+}
+
+.loading-skeleton {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: rgba(255, 255, 255, 0.02);
+}
+
+.skeleton-content {
+	width: 80%;
+	max-width: 500px; // 增大骨架屏内容区域
+}
+
+.skeleton-line {
+	height: 16px; // 增大骨架条高度
+	background: linear-gradient(90deg, rgba(255,255,255,0.1) 25%, rgba(255,255,255,0.2) 50%, rgba(255,255,255,0.1) 75%);
+	background-size: 200% 100%;
+	animation: skeleton-loading 2s infinite;
+	border-radius: 8px; // 增大圆角
+	margin-bottom: 16px; // 增大间距
+	
+	&.short {
+		width: 60%;
+	}
+	
+	&.medium {
+		width: 80%;
+	}
+}
+
+@keyframes skeleton-loading {
+	0% {
+		background-position: 200% 0;
+	}
+	100% {
+		background-position: -200% 0;
+	}
+}
+
+.error-state {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: rgba(255, 255, 255, 0.02);
+}
+
+.error-content {
+	text-align: center;
+	color: #ccc;
+	max-width: 500px; // 增大错误内容区域
+	padding: 50px 30px; // 增大内边距
+	
+	h4 {
+		color: #ff9f40;
+		margin-bottom: 25px; // 增大间距
+		font-size: 1.4rem; // 增大字体
+	}
+	
+	p {
+		margin-bottom: 20px; // 增大间距
+		font-size: 1rem; // 增大字体
+		line-height: 1.8;
+	}
+	
+	.view-btn {
+		background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+		border: none;
+		color: white;
+		padding: 15px 30px; // 增大按钮尺寸
+		border-radius: 10px; // 增大圆角
+		font-size: 1rem; // 增大字体
+		cursor: pointer;
+		transition: all 0.3s ease;
+		margin-top: 20px; // 增大顶部间距
+		
+		&:hover {
+			transform: translateY(-2px);
+			box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+		}
+	}
+}
+
+.embed-preview {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: linear-gradient(135deg, rgba(26, 26, 46, 0.9) 0%, rgba(22, 33, 62, 0.9) 50%, rgba(15, 52, 96, 0.9) 100%);
+}
+
+.preview-content {
+	text-align: center;
+	max-width: 600px; // 增大预览内容区域
+	padding: 50px 40px; // 增大内边距
+}
+
+.preview-header {
+	margin-bottom: 40px; // 增大间距
+	
+	h3 {
+		color: #fff;
+		font-size: 1.8rem; // 增大字体
+		margin-bottom: 15px; // 增大间距
+		text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+	}
+	
+	p {
+		color: #ccc;
+		font-size: 1.1rem; // 增大字体
+		margin: 0;
+	}
+}
+
+.preview-features {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); // 增大最小宽度
+	gap: 20px; // 增大间距
+	margin-bottom: 40px; // 增大间距
+}
+
+.feature-item {
+	display: flex;
+	align-items: center;
+	gap: 12px; // 增大间距
+	background: rgba(255, 255, 255, 0.1);
+	padding: 16px 20px; // 增大内边距
+	border-radius: 10px; // 增大圆角
+	border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.feature-icon {
+	font-size: 1.4rem; // 增大图标
+}
+
+.feature-text {
+	color: #ccc;
+	font-size: 1rem; // 增大字体
+}
+
+.preview-action {
+	margin-top: 40px; // 增大间距
+}
+
+.preview-btn {
+	background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+	border: none;
+	color: white;
+	padding: 18px 36px; // 增大按钮尺寸
+	border-radius: 12px; // 增大圆角
+	font-size: 1.1rem; // 增大字体
+	font-weight: 500;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	box-shadow: 0 4px 15px rgba(102, 126, 234, 0.2);
+	
+	&:hover {
+		transform: translateY(-3px);
+		box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+	}
+}
+
+#canvaIframe {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	border: none;
+}
+
+// 联系方式部分样式
+.contact-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+	gap: 30px;
+	margin-bottom: 40px;
+}
+
+.contact-card {
+	background: rgba(255, 255, 255, 0.05);
+	border-radius: 15px;
+	padding: 30px;
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	text-align: center;
+	
+	h3 {
+		color: #fff;
+		margin-bottom: 15px;
+		font-size: 1.2rem;
+	}
+	
+	p {
+		color: #ccc;
+		font-size: 1rem;
+		margin: 0;
+	}
+}
+
+.achievements-card {
+	background: rgba(255, 255, 255, 0.1);
+	border-radius: 15px;
+	padding: 30px;
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	
+	h3 {
+		color: #fff;
+		margin-bottom: 25px;
+		font-size: 1.5rem;
+		text-align: center;
+	}
+}
+
+.achievements-list {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+	gap: 15px;
+}
+
+.achievement-item {
+	background: rgba(147, 151, 158, 0.1);
+	padding: 15px;
+	border-radius: 10px;
+	color: #ccc;
+	text-align: center;
+	border-left: 3px solid #93979e;
+}
+
+// 响应式设计
+@media screen and (max-width: 768px) {
+	.embed-toolbar {
+		flex-direction: column;
+		gap: 15px; // 增大间距
+		text-align: center;
+		padding: 20px; // 增大移动端内边距
+	}
+	
+	.toolbar-right {
+		justify-content: center;
+	}
+	
+	.embed-wrapper {
+		// 移动端保持较大的显示区域
+		padding-bottom: 80%; // 移动端增大高度比例
+		min-height: 400px; // 移动端最小高度
+	}
+	
+	.preview-features {
+		grid-template-columns: 1fr;
+		gap: 15px; // 移动端间距
+	}
+	
+	.feature-item {
+		justify-content: center;
+		padding: 14px 18px; // 移动端适当调整内边距
+	}
+	
+	.preview-content {
+		padding: 40px 25px; // 移动端调整内边距
+		max-width: 100%; // 移动端使用全宽
+	}
+	
+	.preview-header h3 {
+		font-size: 1.5rem; // 移动端调整字体大小
+	}
+	
+	.section-title {
+		font-size: 2.5rem; // 移动端增大标题字体
+		margin-bottom: 50px; // 增大间距
+	}
+}
+
+// 大屏幕优化
+@media screen and (min-width: 1200px) {
+	.canva-embed-container {
+		max-width: 1000px; // 大屏幕上设置最大宽度，避免过宽
+		margin: 0 auto;
+	}
+	
+	.embed-wrapper {
+		padding-bottom: 70%; // 大屏幕上稍微减小高度比例，保持更好的比例
+		min-height: 600px; // 大屏幕最小高度
+	}
 }
