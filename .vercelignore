@@ -1,0 +1,10 @@
+node_modules/
+.git/
+*.log
+.env
+.DS_Store
+README.md
+.editorconfig
+src/
+gulpfile.js
+package-lock.json 
